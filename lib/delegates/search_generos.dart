@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:portal_peliculas/extensions/string_extensions.dart';
 
 import 'package:portal_peliculas/models/generos_model.dart';
 
@@ -39,7 +40,7 @@ class SearchGeneros extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     List<GeneroModel> generos = [];
     for (var item in listaGenero) {
-      if (item.name.contains(query)) {
+      if (item.name.contains(query.capitalize())) {
         generos.add(GeneroModel(id: item.id, name: item.name));
       }
     }
@@ -62,8 +63,9 @@ class SearchGeneros extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     generosFiltro = listaGenero.where((valor) {
-      return valor.name.contains(query);
-    },).toList();
+      return valor.name.contains(query.capitalize());
+    }).toList();
+
     return ListView.builder(
       itemCount: generosFiltro.length,
       itemBuilder: (context, index) {
