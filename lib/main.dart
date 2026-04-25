@@ -11,17 +11,18 @@ class PortalPeliculas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String titleApp = "Portal de peliculas";
     return MaterialApp(
-      initialRoute: "/",
+      //initialRoute: "/",
       routes: {
-        "cine": (context) => PeliculasCine(),
-        "tv": (context) => PeliculasTv(),
-        "generos": (context) => Genero(),
+        "cine/": (_) => PeliculasCine(title: titleApp,),
+        "tv/": (_) => PeliculasTv(title: titleApp,),
+        "generos/": (_) => Genero(title: titleApp,),
       },
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal)),
-      home: Home(),
+      title: titleApp,
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.red)),
+      home: Home(title: titleApp,),
     );
   }
 }

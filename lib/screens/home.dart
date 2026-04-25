@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portal_peliculas/screens/generos_screen.dart';
 import 'package:portal_peliculas/screens/peliculas_cine_screen.dart';
-import 'package:portal_peliculas/screens/peliculas_tv_screen.dart';
 
 class Home extends StatefulWidget {
-  const Home({
-    super.key,
-  });
+  const Home({super.key, required this.title});
 
+  final String title;
   @override
   State<Home> createState() => _HomeState();
 }
@@ -15,8 +12,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Genero()
+    return PeliculasCine(title: widget.title,
     );
   }
 }

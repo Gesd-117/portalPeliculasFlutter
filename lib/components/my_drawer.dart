@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatefulWidget {
-  const MyDrawer({super.key});
+  const MyDrawer({super.key, required this.selectedIndex, required this.onDestinationSelected});
 
+  final int selectedIndex;
+  final ValueChanged<int> onDestinationSelected;
   @override
   State<MyDrawer> createState() => _MyDrawerState();
 }
@@ -11,6 +13,8 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
+      selectedIndex: widget.selectedIndex,
+      onDestinationSelected: widget.onDestinationSelected,
       // ignore: sized_box_for_whitespace
       header: Container(
         width: double.infinity,
